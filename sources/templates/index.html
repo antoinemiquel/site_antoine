@@ -13,9 +13,10 @@
 
 Bienvenue sur ma page
 
-{% if resultat > 0 %}
+{% if resultat > 1 %}
 <h2>Il y a {{ resultat }} entrées dans la base.</h2>
-
+{% elif resultat > 0 %}
+<h2>Il y a {{ resultat }} entrée dans la base.</h2>
 {% endif %}
 
 
