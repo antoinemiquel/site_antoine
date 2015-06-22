@@ -9,15 +9,10 @@
 
 
 {% block body %}
-<h1>Site d'Antoine</h1>
+    <h1>Site d'Antoine</h1>
 
-Bienvenue sur ma page
+    <h3>Bienvenue sur ma page</h3>
 
-{% if resultat > 1 %}
-<h2>Il y a {{ resultat }} entrées dans la base.</h2>
-{% elif resultat > 0 %}
-<h2>Il y a {{ resultat }} entrée dans la base.</h2>
-{% endif %}
-
+    <a href="{{ url_for('visu_accidents') }}">Visualisation statistiques accidents de la route 2006-2011</a>
 
 {% endblock %}

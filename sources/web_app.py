@@ -26,6 +26,10 @@ def index():
         connection.close()
     return render_template('index.html', resultat=result['nb'])
 
+@application.route('/visu_accidents')
+def visu_accidents():
+    return render_template('visu_accident.html')
+
 if __name__ == '__main__':
 
     application.debug = True

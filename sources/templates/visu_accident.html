@@ -1,0 +1,48 @@
+<!doctype html>
+<head></head>
+<title>Visu_accidents</title>
+<link rel=stylesheet type=text/css href="http://site-antoine-dev.s3-website-eu-west-1.amazonaws.com/statics/style.css">
+<script type=text/javascript src="http://site-antoine-dev.s3-website-eu-west-1.amazonaws.com/statics/jquery.js"></script>
+<link rel="stylesheet" href="http://site-antoine-dev.s3-website-eu-west-1.amazonaws.com/statics/jquery-ui.css">
+<script type=text/javascript src="http://site-antoine-dev.s3-website-eu-west-1.amazonaws.com/statics/jquery-ui.js"></script>
+
+<script src="http://site-antoine-dev.s3-website-eu-west-1.amazonaws.com/statics/d3.v3.min.js"></script>
+<script src="http://site-antoine-dev.s3-website-eu-west-1.amazonaws.com/statics/gradientPie.js"></script>
+
+</head>
+
+
+{% block body %}
+    <h2>Visualisation statistiques des accidents de la route en France de 2006 à 2011</h2>
+    <button onClick="changeData()">Change Data</button>
+    <script>
+
+        var salesData=[
+            {label:"Basic", color:"#3366CC"},
+            {label:"Plus", color:"#DC3912"},
+            {label:"Lite", color:"#FF9900"},
+            {label:"Elite", color:"#109618"},
+            {label:"Delux", color:"#990099"}
+        ];
+
+        var svg = d3.select("body").append("svg").attr("width", 700).attr("height", 400);
+
+        svg.append("g").attr("id","salespie");
+        svg.append("g").attr("id","quotespie");
+
+        gradPie.draw("salespie", randomData(), 200, 200, 160);
+        gradPie.draw("quotespie", randomData(), 500, 200, 100);
+
+        function changeData(){
+            gradPie.transition("salespie", randomData(), 160);
+            gradPie.transition("quotespie", randomData(), 100);
+        }
+
+        function randomData(){
+            return salesData.map(function(d){
+                return {label:d.label, value:1000*Math.random(), color:d.color};});
+        }
+    </script>
+
+
+{% endblock %}
